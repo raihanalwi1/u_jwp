@@ -30,9 +30,12 @@ class Kursus extends CI_Controller {
 
     }
     public function edit($id){
-        $data['record'] = $this->M_kursus->get_data_by_id($id);
+        $data = [
+            'title' => 'Halaman Edit kursus'
+        ];
+        $kursus['record'] = $this->M_kursus->get_data_by_id($id);
         $this->load->view('template/header', $data);
-        $this->load->view('kursus/edit', $data);
+        $this->load->view('kursus/edit', $kursus);
     }
     public function update($id){
         $data = array(

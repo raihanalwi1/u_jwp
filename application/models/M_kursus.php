@@ -13,10 +13,8 @@ class M_kursus extends CI_model{
         return $query->row();
     }
     public function update_kursus($id, $data){
-		
         $this->db->where('id_kursus', $id);
         $this->db->update('kursus', $data);
-        
 	}
     public function hapus_kursus($id){
         $this->db->where('id_kursus', $id);

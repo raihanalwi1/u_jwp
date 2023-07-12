@@ -6,7 +6,7 @@
 			}
 		</style>
 		<!-- Tabel pendaftaran -->
-		<h2 class="text-center pt-5 pb-3">Pendaftaran Mahasiswa</h2>
+		<h2 class="text-center pt-5 pb-3"><?= $header;?></h2>
 		<form class="form-inline" action="" method="post">
 			<label for="ktg" class="mb-4 mr-sm-2">Kategori:</label>
 			<select name="status" class="custom-select mb-4 mr-sm-2" id="ktg">

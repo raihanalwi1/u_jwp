@@ -5,6 +5,7 @@
 			<h2 class="pt-5 pb-4">Tambah Pengguna</h2>
 
 			<!-- pesan -->
+            <?= $this->session->flashdata('pesan')?>
 
 			<div class="form-group">
 				<label for="nama">Nama</label>
