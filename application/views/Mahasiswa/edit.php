@@ -13,10 +13,10 @@
 				</div>
 				<div class="form-group">
 					<label for="nama">Nama</label>
-					<input type="text" class="form-control" id="nama" value="<?= $record->nama ?>" name="nama" maxlength="64" required>
+					<input type="text" class="form-control" id="nama" value="<?= $record->nama_mhs ?>" name="nama" maxlength="64" required>
 					<div class="invalid-feedback">Please fill out this field.</div>
 				</div>
 				<button type="submit" class="btn btn-primary mb-5" name="submit">Ubah</button>
-				<a href="index.php"><button type="button" class="btn btn-outline-secondary ml-3 mb-5">Batal</button></a>
+				<a href="<?= base_url('index.php/mahasiswa')?>"><button type="button" class="btn btn-outline-secondary ml-3 mb-5">Batal</button></a>
 			</form>
 		</div>

@@ -1,7 +1,7 @@
 <?php 
 class M_jadwal extends CI_model{
     public function get_jadwal(){
-        $this->db->select('jadwal.id_kursus, id_jadwal, waktu, kursus.nama');
+        $this->db->select('jadwal.id_kursus, id_jadwal, waktu, kursus.nama_kursus');
         $this->db->from('jadwal');
         $this->db->join('kursus', 'jadwal.id_kursus = kursus.id_kursus', 'left');
         $query = $this->db->get();

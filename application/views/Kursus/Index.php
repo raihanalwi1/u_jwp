@@ -48,7 +48,7 @@
                 <tbody>
                     <tr>
                         <td><?= $no++?></td>
-                        <td><?= $row->nama?></td>
+                        <td><?= $row->nama_kursus?></td>
                         <td><?= $row->keterangan?></td>
                         <td><?= $row->lama?></td>
                         <?php if ($this->session->userdata('Level') == 'Admin')  {?>

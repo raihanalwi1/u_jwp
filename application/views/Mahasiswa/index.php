@@ -41,7 +41,7 @@
                     <td><?= $no++?></td>    
                     <td><?= $row->npm?></td>    
                     <td><?= $row->kelas?></td>    
-                    <td><?= $row->nama?></td>
+                    <td><?= $row->nama_mhs?></td>
                     <td class="text-center">
                         <a href="<?= base_url('index.php/mahasiswa/edit/'.$row->npm)?>"><button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-pen"></i>Edit</button></a>
                     </td>

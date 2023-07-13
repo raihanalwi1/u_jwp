@@ -7,7 +7,7 @@ class Pengguna extends CI_Controller {
         $this->load->model('M_pengguna');
         if ($this->session->userdata('Level')!= 'Admin'){
                 redirect('auth');
-            }
+        }
     }
     public function index(){
         $data = [

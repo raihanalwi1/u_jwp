@@ -6,9 +6,9 @@ class Jadwal extends CI_Controller {
         parent::__construct();
         $this->load->model('M_jadwal');
         $this->load->model('M_kursus');
-        if ($this->session->userdata('Status')!= 'sudahLogin'){
-            redirect('auth');
-        }
+        // if ($this->session->userdata('Status')!= 'sudahLogin'){
+        //     redirect('auth');
+        // }
     }
     public function index(){
         $data = [
@@ -35,6 +35,9 @@ class Jadwal extends CI_Controller {
         redirect('jadwal/', 'refresh');
     }
     public function edit($id){
+        if ($this->session->userdata('Level')!= 'Admin'){
+            redirect('auth');
+        }
         $data = [
             'title' => 'Halaman Edit Jadwal'
         ];
@@ -44,6 +47,17 @@ class Jadwal extends CI_Controller {
         $this->load->view('jadwal/edit', $jadwal);
     }
     public function update($id){
-        
+        $data = array(
+            'id_kursus' => $this->input->post('id'),
+            'waktu' => $this->input->post('waktu')
+        );
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success">Data Berhasil di ubah!</div>');
+        $data['record'] = $this->M_jadwal->update_jadwal($id, $data);
+        redirect('jadwal/', 'refresh');
+    }
+    public function hapus($id){
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success"> Data berhasil dihapus! </div>');
+        $data = $this->M_jadwal->hapus_jadwal($id);
+        redirect('jadwal', 'refresh');
     }
 }

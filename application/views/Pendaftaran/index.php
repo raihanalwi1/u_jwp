@@ -1,19 +1,24 @@
 <!-- Tampilan pendaftaran admin -->
+<?php if ($this->session->userdata('Level') == 'Admin') { ?>
 <div class="container">
-		<style>
+		<!-- <style>
 		body {
 				background-color: #C6DEFF;
 			}
-		</style>
+		</style> -->
 		<!-- Tabel pendaftaran -->
-		<h2 class="text-center pt-5 pb-3"><?= $header;?></h2>
-		<form class="form-inline" action="" method="post">
+		<h2 class="text-center pt-5 pb-3"><!--<?= $header;?> --></h2>
+		<form class="form-inline" id="myform" action="<?= base_url('index.php/pendaftaran/searchStatus') ?>" method="post" >
 			<label for="ktg" class="mb-4 mr-sm-2">Kategori:</label>
-			<select name="status" class="custom-select mb-4 mr-sm-2" id="ktg">
+			<select name="status" class="custom-select mb-4 mr-sm-2" id="status">
                 <!-- option -->
-                <option value="1">Menunggu Persetujuan</option>
-            </select>
+                <option value="Menunggu-Persetujuan">Menunggu Persetujuan</option>
+                <option value="Pendaftaran-Diterima">Pendaftaran Diterima</option>
+                <option value="Pendaftaran-Ditolak">Pendaftaran Ditolak</option>
+				
+			</select>
 			<button type="submit" class="btn btn-primary mb-4">Submit</button>
+			
 		</form>
 		<div class="table-responsive mb-5">
 			<table class="table table-bordered">
@@ -26,16 +31,38 @@
 						<th>Nama Kursus</th>
 						<th>Waktu Kursus</th>
 						<th>KRS</th>
-                        <!-- status -->
                         <th>Status</th>
                         <th colspan="2">Aksi</th>
                     </tr>
 				</thead>
-			<tbody>
-            </tbody>
-        </table>
-    </div>
+				
+				<?php $no=1;
+				
+				foreach($tes as $row => $key):
+				?>
+				<tbody>
+					<tr>
+						<td><?= $no++?></td>
+						<td><?= $key->npm?></td>
+						<td><?= $key->kelas?></td>
+						<td><?= $key->nama_mhs?></td>
+						<td><?= $kursus[$row]->nama_kursus?></td>
+						<td><?= $key->waktu?></td>
+						<td><?= $key->krs?></td>
+						<td><?= $key->status?></td>
+						<td class="text-center">
+							<button type="button" class="btn btn-outline-success"><i class="fa-solid fa-check"></i>Terima</button>
+						</td>
+						<td class="text-center">
+							<button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i>Tolak</button>
+						</td>
+					</tr>
+				</tbody>
+				<?php endforeach; ?>
+			</table>
+		</div>
 </div>
+<?php }?>
 <!-- Tampilan pendaftaran peserta -->
 <div class="container">
 		<h2 class="text-center pt-5 pb-3">Informasi Pendaftaran</h2>

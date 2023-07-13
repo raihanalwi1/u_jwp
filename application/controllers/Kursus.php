@@ -30,6 +30,9 @@ class Kursus extends CI_Controller {
 
     }
     public function edit($id){
+        if ($this->session->userdata('Level')!= 'Admin'){
+            redirect('auth');
+        }
         $data = [
             'title' => 'Halaman Edit kursus'
         ];
@@ -48,6 +51,9 @@ class Kursus extends CI_Controller {
     }
     
     public function hapus($id){
+        if ($this->session->userdata('Level')!= 'Admin'){
+            redirect('auth');
+        }
         $this->session->set_flashdata('pesan', '<div class="alert alert-success">Data Berhasil dihapus!</div>');
 
         $data = $this->M_kursus->hapus_kursus($id);

@@ -5,9 +5,9 @@ class Mahasiswa extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('M_mahasiswa');
-        // if ($this->session->userdata('Level')!= 'Admin'){
-        //     redirect('auth');
-        // }
+        if ($this->session->userdata('Level')!= 'Admin'){
+            redirect('auth');
+        }
     }
     public function index(){
         $data = [
@@ -30,6 +30,9 @@ class Mahasiswa extends CI_Controller {
         }
     }
     public function edit($id){
+        if ($this->session->userdata('Level')!= 'Admin'){
+            redirect('auth');
+        }
         $data = [
             'title' => 'Halaman Edit Mahasiswa'
         ];
