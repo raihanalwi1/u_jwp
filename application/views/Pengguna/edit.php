@@ -10,7 +10,7 @@
 			<div class="form-group">
 				<label for="name">Nama</label>
 				<input type="hidden" class="form-control" id="id" value="<?= $record->id_user?>">
-				<input type="text" class="form-control" id="name" placeholder="Masukkan nama " value="<?= $record->nama?>" name="nama" required>
+				<input type="text" class="form-control" id="name" placeholder="Masukkan nama " value="<?= $record->nama_user?>" name="nama" required>
 				
 			</div>
 			<div class="form-group">

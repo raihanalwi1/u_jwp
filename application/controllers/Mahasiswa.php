@@ -22,7 +22,7 @@ class Mahasiswa extends CI_Controller {
             $data = array(
                 'npm' => $this->input->post('npm'),
                 'kelas' => $this->input->post('kelas'),
-                'nama' => $this->input->post('nama')
+                'nama_mhs' => $this->input->post('nama')
             );
             $this->session->set_flashdata('pesan', '<div class="alert alert-success">Data Berhasil ditambahkan!</div>');
             $id = $this->M_mahasiswa->tambah_mahasiswa($data);
@@ -45,7 +45,7 @@ class Mahasiswa extends CI_Controller {
         $data = array(
             'npm' => $this->input->post('npm'),
             'kelas' => $this->input->post('kelas'),
-            'nama' => $this->input->post('nama')
+            'nama_mhs' => $this->input->post('nama')
         );
         $this->session->set_flashdata('pesan', '<div class="alert alert-success">Data Berhasil di ubah!</div>');
         $data['record'] = $this->M_mahasiswa->update_mahasiswa($id, $data);

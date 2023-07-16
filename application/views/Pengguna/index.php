@@ -55,7 +55,7 @@
 					<tr>
 						<td> <?= $no++?></td>
 						<td> <?= $row->username?></td>
-						<td> <?= $row->nama?></td>
+						<td> <?= $row->nama_user?></td>
 						<td> <?= $row->telepon?></td>
 						<td class="text-center">
 							<a href="<?= base_url('index.php/pengguna/edit/'.$row->id_user)?>">

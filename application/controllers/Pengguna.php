@@ -20,7 +20,7 @@ class Pengguna extends CI_Controller {
     public function tambah(){
         if($this->input->post()){
             $data = array(
-                'nama' => $this->input->post('nama'),
+                'nama_user' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
                 'telepon' => $this->input->post('telp'),
                 'password' => $this->input->post('password'),
@@ -42,7 +42,7 @@ class Pengguna extends CI_Controller {
     }
     public function update($id){
         $data = array(
-            'nama' => $this->input->post('nama'),
+            'nama_user' => $this->input->post('nama'),
             'username' => $this->input->post('username'),
             'telepon' => $this->input->post('telp'),
         );

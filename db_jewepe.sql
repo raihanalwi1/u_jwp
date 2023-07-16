@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jul 2023 pada 16.26
+-- Waktu pembuatan: 16 Jul 2023 pada 15.48
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -39,7 +39,8 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `id_kursus`, `waktu`) VALUES
-(1, 1, '2022-08-05');
+(1, 1, '2022-08-05'),
+(2, 1, '2023-07-15');
 
 -- --------------------------------------------------------
 
@@ -49,7 +50,7 @@ INSERT INTO `jadwal` (`id_jadwal`, `id_kursus`, `waktu`) VALUES
 
 CREATE TABLE `kursus` (
   `id_kursus` int(5) NOT NULL,
-  `nama` varchar(64) NOT NULL,
+  `nama_kursus` varchar(64) NOT NULL,
   `keterangan` varchar(255) NOT NULL,
   `lama` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,7 +59,7 @@ CREATE TABLE `kursus` (
 -- Dumping data untuk tabel `kursus`
 --
 
-INSERT INTO `kursus` (`id_kursus`, `nama`, `keterangan`, `lama`) VALUES
+INSERT INTO `kursus` (`id_kursus`, `nama_kursus`, `keterangan`, `lama`) VALUES
 (1, 'Fundamental Web', 'Introduction of Web Programming', '8 pertemuan'),
 (2, 'Fundamental Golang', 'Indroduction of golang programming', '8 pertemuan'),
 (4, 'UI /UX ', 'Indroduction of User interface and User experience', '9 pertemuan'),
@@ -74,15 +75,16 @@ INSERT INTO `kursus` (`id_kursus`, `nama`, `keterangan`, `lama`) VALUES
 CREATE TABLE `mahasiswa` (
   `npm` varchar(8) NOT NULL,
   `kelas` varchar(5) NOT NULL,
-  `nama` varchar(64) NOT NULL
+  `nama_mhs` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`npm`, `kelas`, `nama`) VALUES
-('123', '4IA01', 'Achwall Taufiq Hidayat');
+INSERT INTO `mahasiswa` (`npm`, `kelas`, `nama_mhs`) VALUES
+('123', '4IA01', 'topik'),
+('55419249', '4IA10', 'Raihan Alwi Noer');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE `user` (
   `id_user` int(5) NOT NULL,
   `username` varchar(16) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `nama` varchar(32) NOT NULL,
+  `nama_user` varchar(32) NOT NULL,
   `telepon` varchar(13) NOT NULL,
   `level` enum('Admin','Mahasiswa') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,9 +126,9 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `telepon`, `level`) VALUES
+INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `telepon`, `level`) VALUES
 (1, 'admin', 'admin', 'alwi', '081234567890', 'Admin'),
-(2, 'andis', '1', 'Sylandis', '', 'Mahasiswa'),
+(2, 'andis', '1', 'Sylandis', '0872631312', 'Mahasiswa'),
 (3, 'mahasiswa1', '', 'dinda', '0923183912', 'Admin'),
 (4, 'dadas', '', 'dada', '1111', 'Admin');
 
@@ -175,7 +177,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jadwal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kursus`
