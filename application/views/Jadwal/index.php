@@ -36,7 +36,7 @@
 						<th>No</th>
 						<th>Nama Kursus</th>
 						<th>Waktu Kursus</th>
-						<?php if ($this->session->userdata('Level') == 'Admin') { ?>
+						<?php if ($this->session->userdata('Status') == 'sudahLogin') { ?>
 						<th colspan="2">Aksi</th>
 						<?php }?>
 					</tr>
@@ -59,7 +59,11 @@
 								Hapus
 							</button></a>
 						</td>
-						<?php }?>
+						<?php }elseif($this->session->userdata('Level') == 'Mahasiswa') {?>
+							<td class="text-center"><a href="<?= base_url('index.php/jadwal/daftar/'. $row->id_jadwal)?>">
+								<button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i> Daftar</button>
+							</a></td>
+						<?php } ?>
 					</tr>
                     
                 </tbody>

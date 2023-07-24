@@ -18,16 +18,32 @@ class Auth extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $cek = $this->M_auth->cekLogin($username, $password);
-        $row = $cek->row();
-        $total = $cek->num_rows();
+        $cek_admin = $this->M_auth->cekLogin($username, $password);
+        $cek_mhs = $this->M_auth->cekLogin_mhs($username, $password);
+        $row1 = $cek_admin->row();
+        $row2 = $cek_mhs->row();
+        $total1 = $cek_admin->num_rows();
+        $total2 = $cek_mhs->num_rows();
 
-        if ($total > 0){
+        if ($total1 > 0){
             $this->session->set_userdata(
                 [
-                    'Username'=> $row->username,
-                    'Name'=> $row->nama,
-                    'Level'=> $row->level,
+                    'Username'=> $row1->username,
+                    'Name'=> $row1->nama_user,
+                    'Level'=> 'Admin',
+                    'Npm' => $row1->npm,
+                    'Status'=> 'sudahLogin'
+                ]
+            );
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success">Login Berhasil</div>');
+            redirect('home','refresh');
+        }elseif ($total2 > 0){
+            $this->session->set_userdata(
+                [
+                    'Npm' => $row2->npm,
+                    'Kelas' => $row2->kelas,
+                    'Level' => 'Mahasiswa',
+                    'Name' => $row2->nama_mhs,
                     'Status'=> 'sudahLogin'
                 ]
             );

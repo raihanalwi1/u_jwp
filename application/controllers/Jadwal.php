@@ -60,4 +60,10 @@ class Jadwal extends CI_Controller {
         $data = $this->M_jadwal->hapus_jadwal($id);
         redirect('jadwal', 'refresh');
     }
+    public function daftar($id){
+        $data = ['title' => 'Halaman Daftar Kursus' ];
+        $jadwal['record'] = $this->M_jadwal->get_data_by_id($id);
+        $this->load->view('template/header', $data);
+        $this->load->view('jadwal/daftar/index', $jadwal);
+    }
 }

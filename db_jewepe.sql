@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jul 2023 pada 15.48
+-- Waktu pembuatan: 24 Jul 2023 pada 04.05
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -84,6 +84,7 @@ CREATE TABLE `mahasiswa` (
 
 INSERT INTO `mahasiswa` (`npm`, `kelas`, `nama_mhs`) VALUES
 ('123', '4IA01', 'topik'),
+('55412122', '4AG20', 'Sylandis'),
 ('55419249', '4IA10', 'Raihan Alwi Noer');
 
 -- --------------------------------------------------------
@@ -118,19 +119,15 @@ CREATE TABLE `user` (
   `username` varchar(16) NOT NULL,
   `password` varchar(16) NOT NULL,
   `nama_user` varchar(32) NOT NULL,
-  `telepon` varchar(13) NOT NULL,
-  `level` enum('Admin','Mahasiswa') NOT NULL
+  `telepon` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `telepon`, `level`) VALUES
-(1, 'admin', 'admin', 'alwi', '081234567890', 'Admin'),
-(2, 'andis', '1', 'Sylandis', '0872631312', 'Mahasiswa'),
-(3, 'mahasiswa1', '', 'dinda', '0923183912', 'Admin'),
-(4, 'dadas', '', 'dada', '1111', 'Admin');
+INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `telepon`) VALUES
+(1, 'admin', 'admin', 'alwi', '081234567890');
 
 --
 -- Indexes for dumped tables

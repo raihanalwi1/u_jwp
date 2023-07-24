@@ -25,4 +25,5 @@ class M_jadwal extends CI_model{
         $this->db->delete('jadwal');
         return $this->db->affected_rows();
     }
+    
 }
