@@ -4,8 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Jadwal extends CI_Controller {
     public function __construct(){
         parent::__construct();
+        $this->load->helper(array('form', 'url'));
         $this->load->model('M_jadwal');
         $this->load->model('M_kursus');
+        $this->load->model('M_pendaftaran');
         // if ($this->session->userdata('Status')!= 'sudahLogin'){
         //     redirect('auth');
         // }
@@ -65,5 +67,30 @@ class Jadwal extends CI_Controller {
         $jadwal['record'] = $this->M_jadwal->get_data_by_id($id);
         $this->load->view('template/header', $data);
         $this->load->view('jadwal/daftar/index', $jadwal);
+    }
+    public function do_upload()
+    {
+        $data = array(
+            'id_jadwal' => $this->input->post('id_jdwl'),
+            'npm' => $this->input->post('npm'),
+            'status' => 'Menunggu Persetujuan'
+        );
+        $config['upload_path']          =  './assets/upload/';
+        $config['allowed_types']        = 'pdf';
+        $config['file_name']            = date("dmy") . "_" . $data['npm'].'_KRS';
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('krs'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('jadwal/daftar', $error);
+        }
+        else
+        {
+            $upload_data = $this->upload->data();
+            $data['krs'] = $upload_data['file_name'];
+            $this->M_pendaftaran->tambah_daftar($data);
+            redirect('jadwal/', 'refresh');
+        }
+
     }
 }

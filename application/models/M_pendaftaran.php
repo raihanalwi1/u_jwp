@@ -25,5 +25,9 @@ class M_pendaftaran extends CI_model{
         // $this->db->like('status', $status);
         // $query = $this->db->get();
     }
+    public function tambah_daftar($data){
+        $this->db->insert('pendaftaran', $data);
+        return $this->db->insert_id();
+    }
 
 }
