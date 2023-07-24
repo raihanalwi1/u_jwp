@@ -18,7 +18,8 @@ class Pendaftaran extends CI_Controller {
         //     'header' => 'Pendaftaran Mahasiswa'
         // ];
         $datadb['tes'] = $this->M_pendaftaran->get_pendaftaran();
-        $datadb['kursus'] = $this->M_kursus->get_kursus();
+        // var_dump($datadb) or die;
+
         
         $this->load->view('template/header', $data);
         $this->load->view('pendaftaran/index', $datadb);

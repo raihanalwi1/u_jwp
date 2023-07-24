@@ -1,25 +1,40 @@
 <!-- Tampilan pendaftaran admin -->
 <?php if ($this->session->userdata('Level') == 'Admin') { ?>
 <div class="container">
-		<!-- <style>
-		body {
-				background-color: #C6DEFF;
-			}
-		</style> -->
+
 		<!-- Tabel pendaftaran -->
 		<h2 class="text-center pt-5 pb-3"><!--<?= $header;?> --></h2>
 		<form class="form-inline" id="myform" action="<?= base_url('index.php/pendaftaran/searchStatus') ?>" method="post" >
 			<label for="ktg" class="mb-4 mr-sm-2">Kategori:</label>
 			<select name="status" class="custom-select mb-4 mr-sm-2" id="status">
                 <!-- option -->
+                <option id="option1">-- Pilih Status --</option>
                 <option value="Menunggu-Persetujuan">Menunggu Persetujuan</option>
                 <option value="Pendaftaran-Diterima">Pendaftaran Diterima</option>
                 <option value="Pendaftaran-Ditolak">Pendaftaran Ditolak</option>
 				
 			</select>
-			<button type="submit" class="btn btn-primary mb-4">Submit</button>
+			<button type="submit" class="btn btn-primary mb-4" id="submitButton">Submit</button>
 			
 		</form>
+		<script>
+			
+			var option1 = document.getElementById("option1");
+			var submitButton = document.getElementById("submitButton");
+
+			// Menambahkan event listener pada form saat pengguna mengirimkan form
+			document.getElementById("myform").addEventListener("submit", function(event) {
+			// Mencegah pengiriman form jika opsi pertama dipilih
+			if (option1.selected) {
+				event.preventDefault();
+				alert("Anda harus memilih opsi selain pertama sebelum mengirimkan form.");
+			}
+			});
+			</script>
+			<button class="btn btn-primary mb-4" onclick="window.location.href='<?= base_url('index.php/pendaftaran/')?>';">
+			Tampilkan semuanya
+			</button>
+			
 		<div class="table-responsive mb-5">
 			<table class="table table-bordered">
 				<thead class="thead-light text-center">
@@ -46,7 +61,7 @@
 						<td><?= $key->npm?></td>
 						<td><?= $key->kelas?></td>
 						<td><?= $key->nama_mhs?></td>
-						<td><?= $kursus[$row]->nama_kursus?></td>
+						<td><?= $key->nama_kursus?></td>
 						<td><?= $key->waktu?></td>
 						<td><?= $key->krs?></td>
 						<td><?= $key->status?></td>

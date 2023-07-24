@@ -4,10 +4,12 @@ class M_kursus extends CI_model{
         $query = $this->db->get('kursus');
         return $query->result();
     }
+    
     public function tambah_kursus($data){
         $this->db->insert('kursus', $data);
         return $this->db->insert_id();
     }
+    
     public function get_data_by_id($id){
         $query = $this->db->get_where('kursus', array('id_kursus' => $id));
         return $query->row();
